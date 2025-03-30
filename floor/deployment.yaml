@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topologie
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: topologie
+  template:
+    metadata:
+      labels:
+        app: topologie
+    spec:
+      containers:
+      - image: main.local:5000/service-topologie:arm-v-0.5.3
+        name: topologie
+        ports:
+        - containerPort: 3009
